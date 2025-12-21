@@ -1,40 +1,31 @@
-#include <iostream>
-#include "Constants.h"
 #include "JMLCHorn.h"
-#include "Geometry.h"
-#include "Exporter.h"
+#include "DXFExporter.h"
+#include "Constants.h"
+#include <iostream>
 
 int main() {
-    // ===== paramètres utilisateur =====
-    double Fc = 500.0;              // Hz
-    double throatDiameter = 0.025;  // m
-    double mouthAngleDeg = 90.0;    // degrés
-    double T = 0.85;
-    int axialResolution = 300;
-    int radialResolution = 120;
+    // ===== USER PARAMETERS =====
+    double fc = 500.0;            // Hz
+    double throatDiameter = 0.025; // m
+    double T = 0.8;
+    double dl = 0.001;            // axial step (m)
+    double phiStop = 1.1 * Constants::PI; // ~198°
 
-    // ===== conversions =====
-    double throatRadius = throatDiameter / 2.0;
-    double mouthAngleRad = mouthAngleDeg * Constants::PI / 180.0;
-
-    // ===== calcul pavillon =====
     JMLCHorn horn(
-        Fc,
-        throatRadius,
-        mouthAngleRad,
+        fc,
+        throatDiameter,
         T,
-        axialResolution
+        dl,
+        phiStop
     );
 
     auto profile = horn.computeProfile();
-    auto cloud = revolveProfile(profile, radialResolution);
 
-    // ===== export =====
-    Exporter::exportProfileCSV(profile, "jmlc_profile.csv");
-    Exporter::exportCSV(cloud, "jmlc_point_cloud.csv");
+    std::cout << "profile points : " << profile.size() << std::endl;
 
-    std::cout << "JMLC horn generated.\n";
-    std::cout << "Length: " << horn.getLength() << " m\n";
+    DXFExporter::exportProfileDXF(profile, "jmlc_profile.dxf");
+
+    std::cout << "DXF exported : jmlc_profile.dxf\n";
 
     return 0;
 }

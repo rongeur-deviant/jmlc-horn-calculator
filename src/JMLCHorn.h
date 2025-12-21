@@ -1,27 +1,35 @@
 #pragma once
 #include <vector>
-#include "Geometry.h"
+#include "ExpansionLaw.h"
+
+struct ProfilePoint {
+    double x;
+    double y;
+};
 
 class JMLCHorn {
 public:
     JMLCHorn(
-        double cutoffFrequency,
-        double throatRadius,
-        double mouthAngle,
+        double fc,
+        double throatDiameter,
         double T,
-        int axialResolution
+        double dl,
+        double phiStopRad
     );
 
-    std::vector<Point2D> computeProfile() const;
-
-    double getLength() const;
+    std::vector<ProfilePoint> computeProfile() const;
 
 private:
-    double Fc;
-    double r0;
-    double theta;
-    double Tparam;
-    int N;
+    double dl;
+    double phiStop;
+    double throatRadius;
 
-    double length;
+    struct State {
+        double x;
+        double y;
+        double phi;
+        double S;
+    };
+
+    ExpansionLaw law;
 };
