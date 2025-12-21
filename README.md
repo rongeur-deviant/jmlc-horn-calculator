@@ -6,13 +6,12 @@ louis mingot
 
 ## description
 
-C++ tool to generate JMLC horn profiles and 3D point clouds
+C++ tool to generate JMLC horn profiles
 
 ## features
 
 - JMLC horn profile calculation
-- 3D revolution
-- CSV export (profile + point cloud)
+- DXF export (profile)
 - CMake build system
 
 ## build
