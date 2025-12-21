@@ -1,0 +1,11 @@
+# build directory
+build/
+
+# executables
+*.exe
+*.out
+*.app
+
+# OS / IDE
+.vscode/
+.DS_Store
