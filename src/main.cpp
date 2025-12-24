@@ -4,12 +4,13 @@
 #include <iostream>
 
 int main() {
-    // ===== USER PARAMETERS =====
-    double fc = 1000.0; // Hz
-    double throatDiameter = 0.0254; // m
-    double T = 0.7;
-    double dl = 0.001; // axial step (m)
-    double phiStop = 1.1 * Constants::PI; // ~198°
+    // ===== JMLC USER PARAMETERS =====
+    // optimisé ici pour B&C DE250 (+ B&C 12HPL76)
+    double fc = 1200.0;                    // Hz
+    double throatDiameter = 0.0254;        // m (1", standard)
+    double T = 0.80;                       // flare doux / progressif
+    double dl = 0.001;                     // m (1 mm → OK impression / export)
+    double phiStop = 1.25 * Constants::PI; // ~225°
 
     JMLCHorn horn(
         fc,
