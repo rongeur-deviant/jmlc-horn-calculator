@@ -14,10 +14,12 @@ C++ tool to generate JMLC horn profiles
 - DXF export (profile)
 - CMake build system
 
-## build
+## build and run!
 
 ```bash
 mkdir build
 cd build
 cmake ..
 cmake --build .
+cd Debug/
+./jmlc_horn.exe
