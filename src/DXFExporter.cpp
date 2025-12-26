@@ -14,10 +14,7 @@ void exportProfileDXF(
     std::ofstream file(filename);
     if (!file.is_open()) return;
 
-    double scale = 1.0;
-    if (units == UnitSystem::MILLIMETERS) {
-        scale = 1000.0;
-    }
+    double scale = (units == UnitSystem::MILLIMETERS) ? 1000.0 : 1.0;
 
     file << std::fixed << std::setprecision(6);
 
