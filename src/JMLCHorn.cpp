@@ -87,10 +87,6 @@ std::vector<ProfilePoint> JMLCHorn::computeProfile() const {
         // sécurité anti-bug
         if (i > 200000) break;
     }
-
-    if (!profile.empty() && profile.back().x < 0.1) {
-        std::cerr << "WARNING: horn length < 100 mm (check parameters)\n";  
-    }
-
+    
     return profile;
 }
