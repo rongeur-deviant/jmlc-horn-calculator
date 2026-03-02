@@ -13,7 +13,7 @@ detailed in his paper "calcul du pavillon Le Cléac'h"
 ## features
 
 - Jean-michel Le Cléac'h (JMLC) horn profile calculation
-- DXF export (profile) --> which you can then import in a CAD software
+- DXF export (profile) → which you can then import in a CAD software
 - CMake build system
 
 ## build and run!
